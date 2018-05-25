@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>设备信息查看</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/layer.css"/>
+		<script src="../js/jquery.min.js" ></script>
+		<script src="../js/bootstrap.min.js"></script>
+	    <script src="../js/three.min.js"></script>
+	    <script src="../js/OrbitControls.js"></script>
+	    <script src="../media/bcb.js"></script>
+		<script src="../js/web3d.js"></script>
+		<script type="text/javascript" src="../vue/vue.min.js">
+			
+		</script>
+	    <style type="text/css">
+	    	*{
+	    		margin: 0;
+	    		padding: 0;
+	    	}
+	    	ul,ol,dl{
+	    		list-style: none;
+	    	}
+	    	#wrapper{
+	    		margin: 0;
+	    		padding: 0;
+	    		width: 100%;
+	    		height: 100%;
+	    		display: flex;
+	    	}
+	    	.left{
+	    		float: left;
+	    		flex: 4;
+	    		height: 100%;
+	    	}
+	    	.img{
+	    		width: 100%;
+	    		height: 300px;
+	    		background: green;
+	    	}
+	    	.titleImage{
+	    		width: 100%;
+	    		height: 300px;
+	    	}
+	    	.file{
+	    		flex: 1;
+	    		height: 320px;
+	    		margin-top: 10px;
+	    		padding: 10px;
+	    		border: 1px solid lightgray;
+	    		box-sizing:content-box;
+	    		background: lightgray;
+	    		border-radius: 5px;
+	    	}
+	    	.right{
+	    		float: left;
+	    		flex: 5;
+	    		margin: 10px;
+	    		height: 100%;
+	    		font-size: 14px;
+	    	}
+	    	.bigImgContent{
+	    		position: fixed;
+	    		top:0;
+	    		bottom: 0;
+	    		right: 0;
+	    		left: 0;
+	    		background: lightblue;
+	    		visibility: collapse;
+	    		z-index: 1;
+	    	}
+	    	.bigImg{
+	    		overflow: auto;
+	    		width: 100%;
+	    		height: 100%;
+	    	}
+	    </style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div class="left">
+				<div class="img">
+					<img class="titleImage" alt="图片加载失败" onclick="handleDispalyOriginPic()"/>
+				</div>
+				<div class="file">
+					<ul>
+						<li>
+							
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="right">
+				<div param="">
+					<ul>
+						<li v-for="param in paramsList">
+							<label>{{param.ParamKey}}</label>
+							<label>{{param.ParamValue}}</label>
+						</li>
+					</ul>
+				</div>
+				<div mark="">
+					
+				</div>
+			</div>
+		</div>
+		<!--大图-->
+		<div  class="bigImgContent" >
+		 	<img class="bigImg" onclick="handleBigImgClose()"/>
+		</div>
+		<script type="text/javascript">
+			//var server = localStorage.getItem('server')
+			var server = '192.168.1.241:50155'
+			var isFetching = false
+			var equipid
+			var imgPathTitle = 'http://192.168.1.241:50155/root/'
+			var resData
+			
+			var vm = new Vue({
+				el:'#wrapper',
+				data:{
+					paramsList:[]
+				}
+			})
+			
+			window.onload = function(){
+				_getDataById()
+			}
+			
+			/*获取数据*/
+			function _getDataById(){
+				if(!isFetching){
+					isFetching = true
+					$.ajax({
+						type:"get",
+						data:{
+							nodename:'dyysjz'
+						},
+						dataType:"json",
+						url: "http://" + this.server + "/api/equipment/getequipmentinfo",
+						async:true
+					}).done((res)=>{
+						res = res.Data
+						resData = res
+						vm.paramsList = resData.CreateParameterT2List
+						$('.titleImage').attr('src',imgPathTitle + resData.CreateDocumentT3List[0].Thumbnail)
+						$('.bigImg').attr('src',imgPathTitle + resData.CreateDocumentT3List[0].RemotePath)
+
+						isFetching = false
+					}).fail((err)=>{
+						console.log(err)
+						isFetching = false
+					})
+				}
+			}
+			
+			/*显示大图*/
+			function handleDispalyOriginPic(){
+				$('.bigImgContent')[0].style.visibility = 'visible'
+			}
+			
+			function handleBigImgClose(){
+				$('.bigImgContent')[0].style.visibility = 'collapse'
+			}
+		</script>
+	</body>
+</html>

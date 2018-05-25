@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>设备信息设置</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/layer.css"/>
+		<script src="../js/jquery.min.js" ></script>
+		<script src="../js/bootstrap.min.js"></script>
+	    <script src="../js/three.min.js"></script>
+	    <script src="../js/OrbitControls.js"></script>
+	    <script src="../media/bcb.js"></script>
+		<script src="../js/web3d.js"></script>
+		<script type="text/javascript" src="../vue/vue.min.js">
+		</script>
+	    <style type="text/css">
+	    	*{
+	    		margin: 0;
+	    		padding: 0;
+	    	}
+	    	ul,ol,dl{
+	    		list-style: none;
+	    	}
+	    	#wrapper{
+	    		margin: 0;
+	    		padding: 0;
+	    		width: 100%;
+	    		height: 100%;
+	    		display: flex;
+	    	}
+	    	.left{
+	    		float: left;
+	    		flex: 4;
+	    		height: 100%;
+	    	}
+	    	.img{
+	    		width: 100%;
+	    		height: 300px;
+	    		background: green;
+	    	}
+	    	.titleImage{
+	    		width: 100%;
+	    		height: 300px;
+	    	}
+	    	.right{
+	    		float: left;
+	    		flex: 5;
+	    		margin: 10px;
+	    		height: 100%;
+	    		font-size: 14px;
+	    	}
+	    	.param{
+	    		height: 520px;
+	    		overflow: auto;
+	    	}
+	    	.mark{
+	    		width: 100%;
+	    		height: 100px;
+	    		resize: none;
+	    		overflow: hidden;
+	    	}
+	    	.marktext{
+	    		width: 100%;
+	    		height: 100%;
+	    	}
+	    	.paramKey{
+	    		width: 100px;
+	    		margin-right: 10px;
+	    		text-align: right;
+	    		font-weight: 600;
+	    	}
+	    	.bigImgContent{
+	    		position: fixed;
+	    		top:0;
+	    		bottom: 0;
+	    		right: 0;
+	    		left: 0;
+	    		background: lightblue;
+	    		visibility: collapse;
+	    		z-index: 1;
+	    	}
+	    	.bigImg{
+	    		overflow: auto;
+	    		width: 100%;
+	    		height: 100%;
+	    	}
+	    	
+	    	.file {
+			    position: relative;
+			    display: inline-block;
+			    width: 128px;
+			    height: 96px;
+			    margin-top: 10px;
+			    padding: 0;
+			    background: #D0EEFF;
+			    overflow: hidden;
+			    color: #1E88C7;
+			    text-decoration: none;
+			    text-indent: 0;
+			    text-align: center;
+			    line-height: 80px;
+			    background-image: url(../img/add.png);
+			    background-repeat: no-repeat;
+			    background-size: 100% 100%;
+	    		border-radius: 5px;
+			}
+			.file input {
+			    position: absolute;
+			    font-size: 100px;
+			    width: 256px;
+			    height: 192px;
+			    right: 0;
+			    top: 0;
+			    line-height: 200px;
+			    opacity: 0;
+			}
+			.file:hover {
+			    background: #AADFFD;
+			    border-color: #78C3F3;
+			    color: #004974;
+			    text-decoration: none;
+			    background-image: url(../img/add.png);
+			    background-repeat: no-repeat;
+			    background-size: 100% 100%;
+			}
+	    </style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div class="left">
+				<div class="img">
+					<img class="titleImage" alt="图片加载失败" onclick="handleDispalyOriginPic()"/>
+				</div>
+				<div class="fileContainer">
+					<div href="javascript:;" class="file">
+					    <!--<input type="file" id="imputupload" multiple="multiple" size="200">-->
+					    <input type="file" id="imputupload" multiple="multiple" size="200">
+					</div>
+					<div id="">
+						<button onclick="handleUploadClick()">
+							开始上传文件
+						</button>
+					</div>
+					<ul>
+						<li>
+							
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="right">
+				<div class="param">
+					<ul>
+						<li v-for="param in paramsListForShow">
+							<label class="paramKey">{{param.ParamKey}}:</label>
+							<input v-model = "param.ParamValue"></input>
+						</li>
+					</ul>
+				</div>
+				<div class="mark">
+					<textarea class="marktext" v-model="itemForShow.Comment"></textarea>
+				</div>
+			</div>
+		</div>
+		<!--大图-->
+		<div  class="bigImgContent" >
+			<img class="bigImg" onclick="handleBigImgClose()"/>
+		</div>
+		<script type="text/javascript">
+			//var server = localStorage.getItem('server')
+			var server = '192.168.1.241:50155'
+			var isFetching = false
+			var equipid = 2
+			var imgPathTitle = 'http://192.168.1.241:50155/root/'
+			var resData
+			
+			var vm = new Vue({
+				el:'#wrapper',
+				data:{
+					paramsList:[],
+					item:{}
+				},
+				computed:{
+					paramsListForShow:function(){
+						return this.paramsList
+					},
+					itemForShow:function(){
+						return this.item
+					}
+				}
+			})
+			
+			window.onload = function(){
+				_getDataById()
+				
+				window.addEventListener('message',function(event){
+					var messageData = event.data
+					switch(messageData.type){
+						case 'save':{
+							_save(messageData.param)
+							break;
+						}
+						default:{
+							return
+						}
+					}
+				})
+			}
+			
+			/*获取数据*/
+			function _getDataById(){
+				if(!isFetching){
+					isFetching = true
+					$.ajax({
+						type:"get",
+						data:{
+							nodename:'dyysjz'
+						},
+						dataType:"json",
+						url: "http://" + this.server + "/api/equipment/getequipmentinfo",
+						async:true
+					}).done((res)=>{
+						res = res.Data
+						resData = res
+						vm.paramsList = resData.CreateParameterT2List
+						vm.item = resData.Item
+						$('.titleImage').attr('src',imgPathTitle + resData.CreateDocumentT3List[0].Thumbnail)
+						$('.bigImg').attr('src',imgPathTitle + resData.CreateDocumentT3List[0].RemotePath)
+						isFetching = false
+					}).fail((err)=>{
+						console.log(err)
+						isFetching = false
+					})
+				}
+			}
+			
+			/*显示大图*/
+			function handleDispalyOriginPic(){
+				$('.bigImgContent')[0].style.visibility = 'visible'
+			}
+			
+			function handleBigImgClose(){
+				$('.bigImgContent')[0].style.visibility = 'collapse'
+			}
+			
+			var uploadData = {
+				UpdateParameterT2List:[],
+				Item:{}
+			}
+			
+			function _getUploadJsonData(){
+				uploadData.UpdateParameterT2List = []
+				uploadData.Item = {}
+				/*更新基本参数*/
+				for (let param of vm.paramsListForShow) {
+					uploadData.UpdateParameterT2List.push({
+						"FieldName":param.FieldName,
+						"NodeName":param.NodeName,
+						"ParamKey":param.ParamKey,
+						"ParamValue":param.ParamValue,
+						"Sort":param.Sort,
+						"IsBasic":param.IsBasic
+					})
+				}
+				/*更新Item*/
+				uploadData.Item = {
+					"NodeName":"dyysjz",
+					"Comment":vm.itemForShow.Comment,
+					"Id":vm.itemForShow.Id
+				}
+				
+				return uploadData
+			}
+			
+			function _save(val){ 
+				uploadParams()
+			}
+			
+			function uploadParams(){
+				var upd = _getUploadJsonData()
+				$.ajax({
+					type:"put",
+						data:JSON.stringify(upd),
+						dataType:"json",
+						contentType : 'application/json',
+						url: "http://" + this.server + "/api/equipment/putequipmentinfo",
+						async:true
+				}).done(res=>{
+					/*数据发送成功后，发送文件内容*/
+					//uploadFiles()
+				}).fail(res=>{
+					console.log(err)
+				})	
+			}
+
+			var uploading = false;
+	
+			function handleUploadClick(){
+				var _input = $("#imputupload")[0]
+				var _files = _input.files
+				for (var i = 0; i<_files.length;i++) {
+					uploadFile(_files[i],i)
+				}
+				
+				//上传完文件清空数据
+				if (_input.outerHTML) {  
+		            _input.outerHTML = _input.outerHTML;  
+		        } else {
+		            _input.value = "";  
+		        }  
+			}
+			
+			function uploadFile(_file,_id){
+			    var form = new FormData(); // FormData 对象
+                
+                form.enctype = "multipart/form-data";
+				form.append("file", _file); // 文件对象
+                form.append('ownerid',30000);
+                
+                xhr = new XMLHttpRequest();  // XMLHttpRequest 对象
+	            xhr.open("post", "http://" + this.server + "/api/webapp/postequipmentdocument", true); 
+	            xhr.onload = uploadComplete; //请求完成
+	            xhr.onerror =  uploadFailed; //请求失败
+	
+	            xhr.upload.onprogress = progressFunction;//上传进度调用方法实现
+	            xhr.upload.onloadstart = function(){//上传开始执行方法
+	                ot = new Date().getTime();   //设置上传开始时间
+	                oloaded = 0;//设置上传开始时，以上传的文件大小为0
+	            };
+	
+	            xhr.send(form); //开始上传，发送form数据
+			}
+			
+			//上传成功响应
+	        function uploadComplete(evt) {
+	            //服务断接收完文件返回的结果
+	            var data = JSON.parse(evt.target.responseText);
+	            console.log(data)
+	            if(data.Success) {
+	                alert("上传成功！");
+	            }else{
+	                alert("上传失败！");
+	            }
+	
+	        }
+	        //上传失败
+	        function uploadFailed(XMLHttpRequest, textStatus, errorThrown) {
+	            console.log(XMLHttpRequest.status);  
+                console.log(XMLHttpRequest.readyState);  
+                console.log(textStatus);  
+	            alert("上传失败！");
+	        }
+	        //取消上传
+	        function cancleUploadFile(){
+	            xhr.abort();
+	        }
+
+
+	        //上传进度实现方法，上传过程中会频繁调用该方法
+	        function progressFunction(evt) {
+	        	console.log(evt)
+	            //var progressBar = document.getElementById("progressBar");
+	            //var percentageDiv = document.getElementById("percentage");
+	            // event.total是需要传输的总字节，event.loaded是已经传输的字节。如果event.lengthComputable不为真，则event.total等于0
+	            if (evt.lengthComputable) {//
+	                //progressBar.max = evt.total;
+	                //progressBar.value = evt.loaded;
+	                //percentageDiv.innerHTML = Math.round(evt.loaded / evt.total * 100) + "%";
+	                //console.log(Math.round(evt.loaded / evt.total * 100) + "%")
+	            }
+	            var time = document.getElementById("time");
+	            var nt = new Date().getTime();//获取当前时间
+	            var pertime = (nt-ot)/1000; //计算出上次调用该方法时到现在的时间差，单位为s
+	            ot = new Date().getTime(); //重新赋值时间，用于下次计算
+	            var perload = evt.loaded - oloaded; //计算该分段上传的文件大小，单位b
+	            oloaded = evt.loaded;//重新赋值已上传文件大小，用以下次计算
+	            //上传速度计算
+	            var speed = perload/pertime;//单位b/s
+	            var bspeed = speed;
+	            var units = 'b/s';//单位名称
+	            if(speed/1024>1){
+	                speed = speed/1024;
+	                units = 'k/s';
+	            }
+	            if(speed/1024>1){
+	                speed = speed/1024;
+	                units = 'M/s';
+	            }
+	            speed = speed.toFixed(1);
+	            //剩余时间
+	            var resttime = ((evt.total-evt.loaded)/bspeed).toFixed(1);
+	            //time.innerHTML = '，速度：'+speed+units+'，剩余时间：'+resttime+'s';
+	            //if(bspeed==0) time.innerHTML = '上传已取消';
+	        }
+		</script>
+	</body>
+</html>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<node_script>
+<nodes count="56">
+    <node name="bcbb" type="node" lock="yes" level="10">
+      <position x="0" y="0" z="0" />
+      <rotation x="0" y="0" z="0" w="1" />
+      <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1" type="node" lock="yes" level="12" parent="bcbb">
+      <position x="0" y="0" z="0" />
+      <rotation x="0" y="0" z="0" w="1" />
+      <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.1" type="node" lock="yes" level="12" parent="bcbb.1">
+      <position x="0" y="0" z="0" />
+      <rotation x="0" y="0" z="0" w="1" />
+      <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.1.1" type="entity" lock="yes" level="18" parent="bcbb.1.1" file="bcbb.1.1.1.mesh" select="yes">
+            <position x="0.0060577393" y="0.21698093" z="-0.55232078" />
+            <rotation x="0" y="-1.1920929e-007" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.1.2" type="entity" lock="yes" level="18" parent="bcbb.1.1" file="bcbb.1.1.2.mesh" select="yes">
+            <position x="0.0058441162" y="0.23456478" z="-0.30673218" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.1.3" type="entity" lock="yes" level="18" parent="bcbb.1.1" file="bcbb.1.1.3.mesh" select="yes">
+            <position x="0.0055541992" y="0.23557949" z="-0.18972778" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.2" type="node" lock="yes" level="12" parent="bcbb.1">
+      <position x="0" y="0" z="0" />
+      <rotation x="0" y="0" z="0" w="1" />
+      <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.2.1" type="entity" lock="yes" level="18" parent="bcbb.1.2" file="bcbb.1.2.1.mesh" select="yes">
+            <position x="0.005569458" y="0.23558003" z="-0.47935325" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.2.2" type="entity" lock="yes" level="18" parent="bcbb.1.2" file="bcbb.1.2.2.mesh" select="yes">
+            <position x="0.005569458" y="0.23557949" z="-0.46560669" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.2.3" type="entity" lock="yes" level="18" parent="bcbb.1.2" file="bcbb.1.2.3.mesh" select="yes">
+            <position x="0.005569458" y="0.23558003" z="-0.45040894" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.2.4" type="entity" lock="yes" level="18" parent="bcbb.1.2" file="bcbb.1.2.4.mesh" select="yes">
+            <position x="0.005569458" y="0.23557949" z="-0.44799805" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.2.5" type="entity" lock="yes" level="18" parent="bcbb.1.2" file="bcbb.1.2.5.mesh" select="yes">
+            <position x="0.005569458" y="0.23558003" z="-0.45040894" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.3" type="node" lock="yes" level="12" parent="bcbb.1">
+      <position x="0" y="0" z="0" />
+      <rotation x="0" y="0" z="0" w="1" />
+      <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.3.1" type="entity" lock="yes" level="18" parent="bcbb.1.3" file="bcbb.1.3.1.mesh" select="yes">
+            <position x="0.005569458" y="0.23557949" z="-0.42111206" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.3.2" type="entity" lock="yes" level="18" parent="bcbb.1.3" file="bcbb.1.3.2.mesh" select="yes">
+            <position x="0.005569458" y="0.23557949" z="-0.40621948" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.3.3" type="entity" lock="yes" level="18" parent="bcbb.1.3" file="bcbb.1.3.3.mesh" select="yes">
+            <position x="0.005569458" y="0.23568058" z="-0.38934326" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.3.4" type="entity" lock="yes" level="18" parent="bcbb.1.3" file="bcbb.1.3.4.mesh" select="yes">
+            <position x="0.0055541992" y="0.23557955" z="-0.37524414" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.4" type="node" lock="yes" level="12" parent="bcbb.1">
+      <position x="0" y="0" z="0" />
+      <rotation x="0" y="0" z="0" w="1" />
+      <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.4.1" type="entity" lock="yes" level="18" parent="bcbb.1.4" file="bcbb.1.4.1.mesh" select="yes">
+            <position x="0.005569458" y="0.23557949" z="-0.35775757" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.4.2" type="entity" lock="yes" level="18" parent="bcbb.1.4" file="bcbb.1.4.2.mesh" select="yes">
+            <position x="0.005569458" y="0.23557949" z="-0.34283447" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.4.3" type="entity" lock="yes" level="18" parent="bcbb.1.4" file="bcbb.1.4.3.mesh" select="yes">
+            <position x="0.005569458" y="0.23568058" z="-0.32595825" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.4.4" type="entity" lock="yes" level="18" parent="bcbb.1.4" file="bcbb.1.4.4.mesh" select="yes">
+            <position x="0.0055541992" y="0.23558003" z="-0.31188965" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.5" type="node" lock="yes" level="12" parent="bcbb.1">
+      <position x="0" y="0" z="0" />
+      <rotation x="0" y="0" z="0" w="1" />
+      <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.5.1" type="entity" lock="yes" level="18" parent="bcbb.1.5" file="bcbb.1.5.1.mesh" select="yes">
+            <position x="0.005569458" y="0.23557949" z="-0.29440308" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.5.2" type="entity" lock="yes" level="18" parent="bcbb.1.5" file="bcbb.1.5.2.mesh" select="yes">
+            <position x="0.005569458" y="0.23557949" z="-0.27944946" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.5.3" type="entity" lock="yes" level="18" parent="bcbb.1.5" file="bcbb.1.5.3.mesh" select="yes">
+            <position x="0.005569458" y="0.23568058" z="-0.26260376" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.5.4" type="entity" lock="yes" level="18" parent="bcbb.1.5" file="bcbb.1.5.4.mesh" select="yes">
+            <position x="0.0055541992" y="0.23557925" z="-0.24850464" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.6" type="node" lock="yes" level="12" parent="bcbb.1">
+      <position x="0" y="0" z="0" />
+      <rotation x="0" y="0" z="0" w="1" />
+      <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.6.1" type="entity" lock="yes" level="18" parent="bcbb.1.6" file="bcbb.1.6.1.mesh" select="yes">
+            <position x="0.005569458" y="0.23557949" z="-0.23101807" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.6.2" type="entity" lock="yes" level="18" parent="bcbb.1.6" file="bcbb.1.6.2.mesh" select="yes">
+            <position x="0.005569458" y="0.23557949" z="-0.21609497" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.6.3" type="entity" lock="yes" level="18" parent="bcbb.1.6" file="bcbb.1.6.3.mesh" select="yes">
+            <position x="0.005569458" y="0.23568058" z="-0.19924927" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.6.4" type="entity" lock="yes" level="18" parent="bcbb.1.6" file="bcbb.1.6.4.mesh" select="yes">
+            <position x="0.0055541992" y="0.23557919" z="-0.18515015" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.7" type="node" lock="yes" level="12" parent="bcbb.1">
+      <position x="0" y="0" z="0" />
+      <rotation x="0" y="0" z="0" w="1" />
+      <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.7.1" type="entity" lock="yes" level="18" parent="bcbb.1.7" file="bcbb.1.7.1.mesh" select="yes">
+            <position x="0.005569458" y="0.23557949" z="-0.16763306" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.7.2" type="entity" lock="yes" level="18" parent="bcbb.1.7" file="bcbb.1.7.2.mesh" select="yes">
+            <position x="0.005569458" y="0.23557949" z="-0.15274048" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.7.3" type="entity" lock="yes" level="18" parent="bcbb.1.7" file="bcbb.1.7.3.mesh" select="yes">
+            <position x="0.005569458" y="0.23568058" z="-0.13742065" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.8" type="node" lock="yes" level="12" parent="bcbb.1">
+      <position x="0" y="0" z="0" />
+      <rotation x="0" y="0" z="0" w="1" />
+      <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.8.1" type="entity" lock="yes" level="18" parent="bcbb.1.8" file="bcbb.1.8.1.mesh" select="yes">
+            <position x="0.0060577393" y="0.25738239" z="-0.073303223" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.1.8.2" type="entity" lock="yes" level="18" parent="bcbb.1.8" file="bcbb.1.8.2.mesh" select="yes">
+            <position x="0.0055389404" y="0.23568034" z="-0.11737061" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.2" type="node" lock="yes" level="12" parent="bcbb">
+      <position x="0" y="0" z="0" />
+      <rotation x="0" y="0" z="0" w="1" />
+      <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.2.1" type="entity" lock="yes" level="18" parent="bcbb.2" file="bcbb.2.1.mesh" select="yes">
+            <position x="0.005569458" y="0.21283913" z="0.013061523" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.2.2" type="entity" lock="yes" level="18" parent="bcbb.2" file="bcbb.2.2.mesh" select="yes">
+            <position x="0.005569458" y="0.23557949" z="0.075958252" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.2.3" type="entity" lock="yes" level="18" parent="bcbb.2" file="bcbb.2.3.mesh" select="yes">
+            <position x="0.0056915283" y="0.23556846" z="0.094573975" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.2.4" type="entity" lock="yes" level="18" parent="bcbb.2" file="bcbb.2.4.mesh" select="yes">
+            <position x="0.0056915283" y="0.23556846" z="0.10678101" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.2.5" type="entity" lock="yes" level="18" parent="bcbb.2" file="bcbb.2.5.mesh" select="yes">
+            <position x="0.005569458" y="0.23557949" z="0.10873413" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.3" type="node" lock="yes" level="12" parent="bcbb">
+      <position x="0" y="0" z="0" />
+      <rotation x="0" y="0" z="0" w="1" />
+      <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.3.1" type="entity" lock="yes" level="18" parent="bcbb.3" file="bcbb.3.1.mesh" select="yes">
+            <position x="0.005569458" y="0.23568058" z="-0.040557861" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.3.2" type="entity" lock="yes" level="18" parent="bcbb.3" file="bcbb.3.2.mesh" select="yes">
+            <position x="0.005569458" y="0.23568046" z="-0.041870117" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.3.3" type="entity" lock="yes" level="18" parent="bcbb.3" file="bcbb.3.3.mesh" select="yes">
+            <position x="0.005569458" y="0.23568046" z="-0.033813477" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.3.4" type="entity" lock="yes" level="18" parent="bcbb.3" file="bcbb.3.4.mesh" select="yes">
+            <position x="0.005569458" y="0.23568016" z="-0.025756836" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.3.5" type="entity" lock="yes" level="18" parent="bcbb.3" file="bcbb.3.5.mesh" select="yes">
+            <position x="0.0055541992" y="0.23567986" z="-0.017700195" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.3.6" type="entity" lock="yes" level="18" parent="bcbb.3" file="bcbb.3.6.mesh" select="yes">
+            <position x="0.005569458" y="0.24189758" z="0.001373291" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.4" type="entity" lock="yes" level="18" parent="bcbb" file="bcbb.4.mesh" select="yes">
+            <position x="0.0056304932" y="0.23247391" z="0.37216187" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.5" type="entity" lock="yes" level="18" parent="bcbb" file="bcbb.5.mesh" select="yes">
+            <position x="0.005569458" y="0.20821571" z="0.15264893" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.6" type="entity" lock="yes" level="18" parent="bcbb" file="bcbb.6.mesh" select="yes">
+            <position x="0.005569458" y="0.23557949" z="0.33404541" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+    <node name="bcbb.7" type="entity" lock="yes" level="18" parent="bcbb" file="bcbb.7.mesh" select="yes">
+            <position x="0" y="0.082269967" z="0.01260376" />
+            <rotation x="0" y="8.7422777e-008" z="-0" w="-1" />
+            <scale x="1" y="1" z="1" />
+    </node>
+</nodes>
+</node_script>

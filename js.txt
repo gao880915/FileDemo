@@ -1,0 +1,14 @@
+﻿{
+	"UpdateParameterT2List":
+		[
+			{"FieldName":"name","NodeName":"dyysjz","ParamKey":"设备名称","ParamValue":"dyysjz","GroupName":"基础信息","Sort":1,"IsBasic":true},
+			{"FieldName":"position_number","NodeName":"dyysjz","ParamKey":"设备位号","ParamValue":"01","GroupName":"基础信息","Sort":2,"IsBasic":true,"Id":-1,"Sid":"157f876c-c289-419b-bf23-d2bbe401792c"},
+			{"FieldName":"serial_number","NodeName":"dyysjz","ParamKey":"设备编号","ParamValue":null,"GroupName":"基础信息","Sort":3,"IsBasic":true,"Id":-1,"Sid":"83b57ea7-530c-4e81-9ce4-5ed387e7d27f"},
+			{"FieldName":"specifications","NodeName":"dyysjz","ParamKey":"规格型号","ParamValue":null,"GroupName":"基础信息","Sort":4,"IsBasic":true,"Id":-1,"Sid":"3b6dde42-a40f-4f52-a26f-4e4b3d88dae5"},
+			{"FieldName":"category","NodeName":"dyysjz","ParamKey":"设备分类","ParamValue":null,"GroupName":"基础信息","Sort":5,"IsBasic":true,"Id":-1,"Sid":"5af37228-e331-436c-99f1-3c6c4b0f9902"},
+			{"FieldName":"installation_site","NodeName":"dyysjz","ParamKey":"安装位置","ParamValue":null,"GroupName":"基础信息","Sort":6,"IsBasic":true,"Id":-1,"Sid":"8fead881-7ff0-4c76-b68d-4d8ed36eaab4"},
+			{"FieldName":"vender","NodeName":"dyysjz","ParamKey":"供应商","ParamValue":null,"GroupName":"基础信息","Sort":7,"IsBasic":true,"Id":-1,"Sid":"badc67f2-3d0a-41b8-97d6-7a7723b38f18"},
+			{"FieldName":"tag","NodeName":"dyysjz","ParamKey":"标签","ParamValue":null,"GroupName":"基础信息","Sort":9,"IsBasic":true,"Id":-1,"Sid":"32d49a4a-1fd2-42d9-a347-a2b3dc7e2c30"}
+		],
+	"Item":{"NodeName":"dyysjz","Comment":"这是备注","Id":2,"Sid":null}
+}

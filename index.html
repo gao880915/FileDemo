@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>3dvfa</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="css/layer.css"/>
+		<script type="text/javascript" src="./vue/vue.min.js"></script>
+		<style type="text/css">
+			body {
+				font-family: Monospace;
+				background-color: #000C1F;
+				color: #000;
+				margin: 0px;
+				overflow: hidden;
+			}
+			
+			.layer-bar {
+				position: fixed;
+				top: 5px;
+				right: 5px;
+				line-height: 0;
+				z-index: 10000001;
+			}
+			
+			.side-bar {
+				position: fixed;
+				bottom: 20px;
+				right: 5px;
+				line-height: 0;
+				opacity: 0.8;
+			}
+			.bottom-bar {
+				position: fixed;
+				bottom: 5px;
+				width: 100%;
+				text-align: center;
+				line-height: 0;
+				display: none;
+				
+			}
+
+		</style>
+</head>
+
+<body>
+	<ul class="nav" style="font-size: 14px;">
+	  <li class="nav-item">
+	    <a class="nav-link disabled" href="#">三维直点</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModalCenter">添加记录</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="#"  data-toggle="modal" data-target="#ModalEquipmentSet" onclick="handleShowEquiSet()">设备信息设置</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="#"  data-toggle="modal" data-target="#ModalEquipmentInfo" onclick="handleShowEquiInfo()">设备信息查看</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="#" onclick="onHelp()">帮助</a>
+	  </li>
+	</ul>
+
+	<div class="side-bar">
+		<div class="btn-group-sm btn-group-vertical" role="group" aria-label="...">
+			<button type="button" class="btn btn-light" >
+	  			<i class="iconfont icon-home"></i>
+	  		</button>
+	  		<button type="button" class="btn btn-light" style="margin-top: 1px;">
+	  			<i class="iconfont icon-nextlayer"></i>
+	  		</button>
+	  		<button type="button" class="btn btn-light" style="margin-top: 1px;">
+	  			<i class="iconfont icon-upperlayer"></i>
+	  		</button>
+	  		<button type="button" class="btn btn-light" style="margin-top: 1px;">
+	  			<i class="iconfont icon-hide"></i>
+	  		</button>
+	  		<button type="button" class="btn btn-light" style="margin-top: 1px;">
+	  			<i class="iconfont icon-show"></i>
+	  		</button>
+	  		<button type="button" class="btn btn-light" style="margin-top: 1px;" onclick="onInfo()">
+	  			<i class="iconfont icon-info"></i>
+	  		</button>
+		</div>
+	</div>
+	
+	<div class="bottom-bar" id="player">
+		<div class="btn-group" role="group" aria-label="...">
+	  		<button type="button" class="btn btn-light">
+	  			<i class="iconfont icon-frame"></i>
+	  		</button>
+	  		<button type="button" class="btn btn-light">
+	  			<i class="iconfont icon-frame"></i>
+	  		</button>
+		</div>
+	</div>
+	
+	
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document" style="width: 1200px ;max-width: 1200px;">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLongTitle">信息设置</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="embed-responsive embed-responsive-16by9">
+			  <iframe class="embed-responsive-item" src="addinfo.html"></iframe>
+			</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">保存</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!--设备信息设置-->
+	<div class="modal fade equipment" id="ModalEquipmentSet"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document" style="width: 1200px ;max-width: 1200px;">
+	    <div class="modal-content" >
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLongTitle">设备信息设置</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="embed-responsive embed-responsive-16by9 frame_equipset">
+			  <iframe id="EquiSet" class="embed-responsive-item EquiSet" src="./Equip/EquipmentSet_frame.html"></iframe>
+			</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" style="width: 150px;"  onclick="handleEquipSetSave()">保存</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!--设备信息查看-->
+	<div class="modal fade equipment" id="ModalEquipmentInfo"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document" style="width: 1200px ;max-width: 1200px;">
+	    <div class="modal-content" >
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLongTitle">设备信息查看</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="embed-responsive embed-responsive-16by9 frame_equipinfo" >
+			  <iframe class="embed-responsive-item EquiInfo" src="./Equip/EquipmentInfo_frame.html"></iframe>
+			</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" style="width: 150px;" data-dismiss="modal">关闭</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<script src="js/jquery.min.js" ></script>
+	<script src="js/bootstrap.min.js"></script>
+    <script src="js/three.min.js"></script>
+    <script src="js/OrbitControls.js"></script>
+    <script src="media/bcb.js"></script>
+	<script src="js/web3d.js"></script>
+	<script src="js/layer.js"></script>
+    <script type="text/javascript">
+	    //init("media",nodes); // nodes 定义在"media/bcb.js"
+	    //render();
+	    window.onload = function(){
+	    	//localStorage.setItem('server',"192.168.1.241:50155")
+	    }
+	    var _equipmentId = 2
+	    
+	    function onHelp(){
+	    	var title = ['帮助','background-color:#8DCE16; color:#fff;',true];
+	    	_openLayer(title,"help.html");
+	    }
+	    
+	    function onInfo(){
+	    	if(SELECTEDNODE != null){
+		    	var title = ['设备信息','background-color:#8DCE16; color:#fff;',true];
+	    		_openLayer(title,"addinfo.html");
+		    }else{
+		    	layer.open({
+				    content: '请先选中场景物体',
+				    skin: 'msg',
+				    time: 2 
+				});
+		    }
+	    }
+	    
+	    function _openLayer(title,frame){
+	    	layer.open({
+				type: 1,
+				title: title,
+				content: '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="' + frame + '"></iframe></div>',
+				anim: 'up',
+				style: 'position:fixed; left:0; top:0; width:100%; height:100%; border: none; -webkit-animation-duration: .5s; animation-duration: .5s;'
+			});
+	    }
+	    
+	    /*打开设备信息设置*/
+	    function handleShowEquiSet(){
+	    	$('.EquiSet').attr('src', $('.EquiSet').attr('src'));
+	    }
+	    
+	    /*设备信息设置保存*/
+	    function handleEquipSetSave(){
+	    	var iframeWin = $("#EquiSet")[0].contentWindow;
+	    	var url=document.location.origin;
+	    	var data = {
+	    		'type':'save',
+	    		'param':'123'
+	    	}
+	    	iframeWin.postMessage(data,url)
+	    }
+	    
+	    /*打开设备信息查看*/
+	    function handleShowEquiInfo(){
+	    	$('.EquiInfo').attr('src', $('.EquiInfo').attr('src'));
+	    }
+    </script>
+</body>
+</html>
